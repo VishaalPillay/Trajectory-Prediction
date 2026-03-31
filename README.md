@@ -382,23 +382,12 @@ trajectory-prediction/
 └── README.md
 ```
 
----
-
-## 🐛 Known Issues Fixed
-
-Four non-obvious bugs were identified and fixed during development. They are documented here so future contributors do not re-introduce them.
-
-| # | Bug | Root Cause | Fix Applied |
-|---|---|---|---|
-| v1 | **Dead Head** — Heads 2 & 3 receive zero gradients from epoch 0 | Pure WTA lets the best-initialised head win every batch permanently | `combined_loss(alpha)` with warmup: MSE term forces all heads to train before WTA competition begins |
-| v2 | **Stationary Agent Rotation** — Random coordinate rotation for still pedestrians | `arctan2(0, 0)` from last-two-frame heading on 2 Hz noisy data | Heading from first→last point over full 2s window; `hypot < 0.1 m` guard skips rotation |
-| v3 | **Myopic Social Radius** — Oncoming agents invisible at 2 m radius | At 1.4 m/s avg speed, agents cover 4.2 m in 3 s — beyond 2 m radius | Radius set to `6.0 m`; inverse-distance weighting deprioritises distant agents naturally |
-| v4 | **nuScenes API Misuse** — Token strings iterated expecting coordinates | `get_prediction_challenge_split()` returns token strings, not `(x,y)` | Extraction rewritten to use `PredictHelper.get_past/future_for_agent()` exclusively |
 
 ---
 
 ## 👥 Team
 
+Vishaal Pillay | Nikhil Balamurugan | Karur Nikhil
 Built for **Hackathon 2026 — Problem Statement 1: Behavioral AI & Temporal Modeling**
 
 ---
