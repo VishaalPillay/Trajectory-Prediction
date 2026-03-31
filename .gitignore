@@ -1,0 +1,32 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+build/
+*.egg
+
+# Virtual environments
+venv/
+env/
+.venv/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+Thumbs.db
+.DS_Store
+
+# Training artifacts (large files — regenerate locally)
+checkpoints/
+runs/
+*.pth
+*.pt
+tensorboard/
+
+# Jupyter
+.ipynb_checkpoints/
